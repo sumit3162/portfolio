@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumit Shingne - Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* bg-slate-900 */
+            color: #E2E8F0; /* text-slate-200 */
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E293B; /* bg-slate-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #34D399; /* bg-emerald-500 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10B981; /* bg-emerald-600 */
+        }
+
+        /* Animation classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero section min height */
+        #home {
+            min-height: 100vh;
+        }
+        
+        /* Mobile menu gradient */
+        .mobile-menu {
+            background: linear-gradient(to bottom, #0F172A, #0F172A 95%);
+        }
+
+        /* Custom styles for AI section */
+        #ai-spark-select {
+            background-color: #1E293B; /* bg-slate-800 */
+            border-color: #334155; /* border-slate-700 */
+            color: #E2E8F0; /* text-slate-200 */
+        }
+
+        #ai-spark-select:focus {
+            outline: none;
+            border-color: #34D399; /* border-emerald-500 */
+            box-shadow: 0 0 0 2px #0F172A, 0 0 0 4px #34D399;
+        }
+        
+        /* Custom spinner for loading */
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navbar -->
+    <header class="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-900/80 backdrop-blur-lg">
+        <div class="container mx-auto max-w-6xl px-4">
+            <nav class="flex h-16 items-center justify-between">
+                <!-- Logo/Name -->
+                <a href="#home" class="text-2xl font-bold text-white transition-colors hover:text-emerald-400">
+                    Sumit Shingne
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden space-x-6 md:flex">
+                    <a href="#about" class="text-slate-300 transition-colors hover:text-emerald-400">About</a>
+                    <a href="#skills" class="text-slate-300 transition-colors hover:text-emerald-400">Skills</a>
+                    <a href="#experience" class="text-slate-300 transition-colors hover:text-emerald-400">Experience</a>
+                    <a href="#projects" class="text-slate-300 transition-colors hover:text-emerald-400">Projects</a>
+                    <a href="#writing" class="text-slate-300 transition-colors hover:text-emerald-400">Writing</a>
+                    <a href="#contact" class="rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-emerald-400">
+                        Contact
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="text-slate-300 md:hidden" aria-label="Open menu">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="absolute left-0 top-16 w-full mobile-menu shadow-lg md:hidden hidden">
+            <div class="flex flex-col space-y-4 p-6">
+                <a href="#about" class="mobile-nav-link text-lg text-slate-300 hover:text-emerald-400">About</a>
+                <a href="#skills" class="mobile-nav-link text-lg text-slate-300 hover:text-emerald-400">Skills</a>
+                <a href="#experience" class="mobile-nav-link text-lg text-slate-300 hover:text-emerald-400">Experience</a>
+                <a href="#projects" class="mobile-nav-link text-lg text-slate-300 hover:text-emerald-400">Projects</a>
+                <a href="#writing" class="mobile-nav-link text-lg text-slate-300 hover:text-emerald-400">Writing</a>
+                <a href="#contact" class="mobile-nav-link rounded-md bg-emerald-500 px-4 py-2 text-center text-lg font-medium text-slate-900 hover:bg-emerald-400">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-6xl px-4">
+
+        <!-- Hero Section -->
+        <section id="home" class="flex flex-col justify-center items-start text-left py-20">
+            <div class="animate-on-scroll">
+                <h1 class="text-5xl font-extrabold text-white md:text-7xl">
+                    Hi, I'm <span class="text-emerald-400">Sumit Shingne</span>.
+                </h1>
+                <h2 class="mt-4 text-3xl font-semibold text-slate-300 md:text-4xl">
+                    Software Developer.
+                </h2>
+                <p class="mt-6 max-w-2xl text-lg text-slate-400">
+                    I build scalable solutions, automate workflows, and analyze data to drive insights. Passionate about solving real-world problems through technology.
+                </p>
+                <div class="mt-8 flex flex-wrap gap-4 items-center">
+                    <a href="https://linkedin.com/in/sumitshingne-9a9364303" target="_blank" rel="noopener noreferrer" class="text-slate-400 transition-colors hover:text-emerald-400" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="h-7 w-7"></i>
+                    </a>
+                    <a href="https://github.com/sumit3162" target="_blank" rel="noopener noreferrer" class="text-slate-400 transition-colors hover:text-emerald-400" aria-label="GitHub">
+                        <i data-lucide="github" class="h-7 w-7"></i>
+                    </a>
+                    <a href="mailto:shinganesumit80@gmail.com" class="text-slate-400 transition-colors hover:text-emerald-400" aria-label="Email">
+                        <i data-lucide="mail" class="h-7 w-7"></i>
+                    </a>
+                    <!-- Download CV Button -->
+                    <a href="https://drive.google.com/file/d/1ZV5uEb2JlBRZVRHjHdh5kVxHb2iEp5sp/view" download="Sumit-Shingne-Resume.pdf" class="ml-2 inline-flex items-center rounded-md border-2 border-emerald-500 px-4 py-2 text-sm font-medium text-emerald-400 transition-all duration-300 hover:bg-emerald-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900">
+                        <i data-lucide="download" class="mr-2 h-4 w-4"></i>
+                        Download CV
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white md:text-4xl">About Me</h2>
+                <div class="mt-6 h-1 w-20 rounded-full bg-emerald-500"></div>
+                
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                    <!-- Profile Photo -->
+                    <div class="md:col-span-1 flex justify-center">
+                        <!-- 
+                            IMPORTANT: Replace this 'src' with a link to your actual profile photo. 
+                            Upload your photo to a service like Imgur or a similar image host.
+                            A good size would be 300x300 pixels.
+                        -->
+                        <img src="https://media.licdn.com/dms/image/v2/D5635AQHglt5Um9R-lg/profile-framedphoto-shrink_200_200/B56ZoQvz6mKEAY-/0/1761217560506?e=1762174800&v=beta&t=_zZcZF0O04ElREj3ClZ45Synhg_flWvUnVGf3jfmrQY"
+                             class="w-64 h-64 md:w-72 md:h-72 rounded-full object-cover shadow-2xl border-4 border-slate-700 transition-all duration-300 hover:border-emerald-500">
+                    </div>
+                    
+                    <!-- About Me Text -->
+                    <div class="md:col-span-2">
+                        <p class="text-lg text-slate-300 leading-relaxed">
+                            I am a Software Developer and Data Enthusiast with hands-on experience in Python Development, Machine Learning, Data Analytics, and Cybersecurity. I am skilled in building scalable solutions, automating workflows, and analyzing data to drive insights. I'm passionate about solving real-world problems through technology, continuous learning, and contributing to impactful projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 bg-slate-800/50 rounded-lg">
+            <div class="animate-on-scroll">
+                <h2 class="text-center text-3xl font-bold text-white md:text-4xl">My Toolkit</h2>
+                <div class="mt-6 mx-auto h-1 w-20 rounded-full bg-emerald-500"></div>
+                <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                    <!-- Skills from resume -->
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll">
+                        <span class="font-medium text-slate-200">Python Development</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 50ms;">
+                        <span class="font-medium text-slate-200">Machine Learning</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 100ms;">
+                        <span class="font-medium text-slate-200">Data Analysis</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 150ms;">
+                        <span class="font-medium text-slate-200">Backend Development</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 200ms;">
+                        <span class="font-medium text-slate-200">Flask</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 250ms;">
+                        <span class="font-medium text-slate-200">Django</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 300ms;">
+                        <span class="font-medium text-slate-200">Pandas</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 350ms;">
+                        <span class="font-medium text-slate-200">NumPy</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 400ms;">
+                        <span class="font-medium text-slate-200">TensorFlow</span>
+                    </div>
+                    <div class="rounded-lg bg-slate-700 p-4 text-center shadow-lg animate-on-scroll" style="transition-delay: 450ms;">
+                        <span class="font-medium text-slate-200">OpenCV</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 md:py-32">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white md:text-4xl">Career Journey</h2>
+                <div class="mt-6 h-1 w-20 rounded-full bg-emerald-500"></div>
+                
+                <!-- Vertical Timeline -->
+                <div class="relative mt-12 border-l-2 border-slate-700">
+                    
+                    <!-- Experience 1 -->
+                    <div class="relative mb-10 pl-8 animate-on-scroll">
+                        <div class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-emerald-500 ring-8 ring-slate-900"></div>
+                        <span class="text-sm font-medium text-slate-400">08/2025 - Present</span>
+                        <h3 class="mt-1 text-xl font-semibold text-white">Python Developer</h3>
+                        <h4 class="text-lg text-emerald-400">Infotact Solutions (Remote)</h4>
+                        <p class="mt-2 text-slate-300">
+                            Contributing to backend development and automation using Python. Writing clean, modular code, building APIs, integrating databases, and applying frameworks like Flask, Django, Pandas, and NumPy.
+                        </p>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="relative mb-10 pl-8 animate-on-scroll">
+                        <div class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-slate-700 ring-8 ring-slate-900"></div>
+                        <span class="text-sm font-medium text-slate-400">04/2025 - 07/2025</span>
+                        <h3 class="mt-1 text-xl font-semibold text-white">Data Analysis Intern</h3>
+                        <h4 class="text-lg text-emerald-400">Unified Mentor Pvt Ltd</h4>
+                        <p class="mt-2 text-slate-300">
+                            Analyzed data trends using Excel, created visual reports, and conducted research on industry benchmarks. Developed data visualizations to facilitate analysis of large datasets.
+                        </p>
+                    </div>
+
+                    <!-- Experience 3 -->
+                    <div class="relative mb-10 pl-8 animate-on-scroll">
+                        <div class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-slate-700 ring-8 ring-slate-900"></div>
+                        <span class="text-sm font-medium text-slate-400">04/2025 - 06/2025</span>
+                        <h3 class="mt-1 text-xl font-semibold text-white">Machine Learning Intern</h3>
+                        <h4 class="text-lg text-emerald-400">Feynn Labs</h4>
+                        <p class="mt-2 text-slate-300">
+                            Worked as an ML Intern within the Business Analytics and Market Research domain at a leading AI company focused on AI integration in SMEs and education.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32 bg-slate-800/50 rounded-lg">
+            <div class="animate-on-scroll">
+                <h2 class="text-center text-3xl font-bold text-white md:text-4xl">Featured Projects</h2>
+                <div class="mt-6 mx-auto h-1 w-20 rounded-full bg-emerald-500"></div>
+
+                <div class="mt-12 grid gap-8 md:grid-cols-2">
+                    
+                    <!-- Project 1: Heart Disease Prediction -->
+                    <div class="flex flex-col rounded-lg bg-slate-700 shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] animate-on-scroll">
+                        <div class="flex-1 p-6">
+                            <h3 class="text-xl font-semibold text-white">Heart Disease Prediction System</h3>
+                            <p class="mt-2 text-sm text-slate-400">Jul 2025 - Aug 2025</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Machine Learning</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Scikit-Learn</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Flask</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Python</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Data Modeling</span>
+                            </div>
+                            <p class="mt-4 text-slate-300">
+                                A machine learning web application that predicts heart disease risk based on patient clinical data using Flask and Scikit-Learn.
+                            </p>
+                        </div>
+                        <div class="bg-slate-600 p-4">
+                            <a href="https://github.com/sumit3162/heart-disease-prediction" target="_blank" rel="noopener noreferrer" class="flex items-center font-medium text-emerald-400 transition-colors hover:text-emerald-300">
+                                View on GitHub <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2: Prank Calculator -->
+                    <div class="flex flex-col rounded-lg bg-slate-700 shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="flex-1 p-6">
+                            <h3 class="text-xl font-semibold text-white">Prank Calculator</h3>
+                            <p class="mt-2 text-sm text-slate-400">Aug 2025 - Aug 2025</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">HTML5</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">JavaScript</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">CSS</span>
+                            </div>
+                            <p class="mt-4 text-slate-300">
+                                A fun and interactive prank calculator that looks professional at first glance but delivers hilarious surprises when used! Perfect for pulling a light-hearted joke on your friends.
+                            </p>
+                        </div>
+                        <div class="bg-slate-600 p-4">
+                            <a href="https://github.com/sumit3162/Prank-Calculator" target="_blank" rel="noopener noreferrer" class="flex items-center font-medium text-emerald-400 transition-colors hover:text-emerald-300">
+                                View on GitHub <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Smart Farming Helper -->
+                    <div class="flex flex-col rounded-lg bg-slate-700 shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="flex-1 p-6">
+                            <h3 class="text-xl font-semibold text-white">Smart Farming Helper - AI-Powered Agricultural Assistant</h3>
+                            <p class="mt-2 text-sm text-slate-400">May 2025 - May 2025</p>
+                             <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Machine Learning</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">TensorFlow</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Flask</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Python</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">HTML/CSS</span>
+                            </div>
+                            <p class="mt-4 text-slate-300">
+                                An intelligent crop recommendation system designed to help small farmers maximize yields through data-driven insights.
+                            </p>
+                        </div>
+                        <div class="bg-slate-600 p-4">
+                            <a href="https://github.com/sumit3162/-Smart-Farming-Helper" target="_blank" rel="noopener noreferrer" class="flex items-center font-medium text-emerald-400 transition-colors hover:text-emerald-300">
+                                View on GitHub <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: ScribbleBoard -->
+                    <div class="flex flex-col rounded-lg bg-slate-700 shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="flex-1 p-6">
+                            <h3 class="text-xl font-semibold text-white">ScribbleBoard - AI-Assisted Diagramming Tool</h3>
+                             <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">JavaScript</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">AI</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Collaborative</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Real-time</span>
+                            </div>
+                            <p class="mt-4 text-slate-300">
+                                A real-time, web-based whiteboard where multiple users can draw diagrams together, featuring an AI assistant that automatically cleans up messy drawings.
+                            </p>
+                        </div>
+                        <div class="bg-slate-600 p-4">
+                            <a href="https://github.com/sumit3162/ScribbleBoard---AI-Assisted-Collaborative-Diagramming-Tool" target="_blank" rel="noopener noreferrer" class="flex items-center font-medium text-emerald-400 transition-colors hover:text-emerald-300">
+                                View on GitHub <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Machine Failure Prediction -->
+                    <div class="flex flex-col rounded-lg bg-slate-700 shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] animate-on-scroll" style="transition-delay: 400ms;">
+                        <div class="flex-1 p-6">
+                            <h3 class="text-xl font-semibold text-white">Machine Failure Prediction</h3>
+                             <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Machine Learning</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Python</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Data Analysis</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Jupyter Notebook</span>
+                            </div>
+                            <p class="mt-4 text-slate-300">
+                                Developed a predictive machine learning model to anticipate mechanical failures in industrial machines using real-time sensor data.
+                            </p>
+                        </div>
+                        <div class="bg-slate-600 p-4">
+                            <a href="https://github.com/sumit3162/Machine-Failure-Prediction" target="_blank" rel="noopener noreferrer" class="flex items-center font-medium text-emerald-400 transition-colors hover:text-emerald-300">
+                                View on GitHub <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Instagram Fake Profile Detector -->
+                    <div class="flex flex-col rounded-lg bg-slate-700 shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] animate-on-scroll" style="transition-delay: 500ms;">
+                        <div class="flex-1 p-6">
+                            <h3 class="text-xl font-semibold text-white">Instagram Fake Profile Detector</h3>
+                             <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Python</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Flask</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">Machine Learning</span>
+                                <span class="inline-block rounded-full bg-slate-600 px-3 py-1 text-xs font-medium text-emerald-300">K-NN</span>
+                            </div>
+                            <p class="mt-4 text-slate-300">
+                                A Flask web app that uses the K-Nearest Neighbors (KNN) algorithm to detect fake Instagram profiles based on image and profile features.
+                            </p>
+                        </div>
+                        <div class="bg-slate-600 p-4">
+                            <a href="https://github.com/sumit3162/instagram-Fake-Profile-Detector" target="_blank" rel="noopener noreferrer" class="flex items-center font-medium text-emerald-400 transition-colors hover:text-emerald-300">
+                                View on GitHub <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Project Spark Section -->
+        <section id="ai-spark" class="py-20 md:py-32 text-center">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white md:text-4xl">✨ AI Project Spark</h2>
+                <div class="mt-6 mx-auto h-1 w-20 rounded-full bg-emerald-500"></div>
+                <p class="mt-8 mx-auto max-w-2xl text-lg text-slate-300 leading-relaxed">
+                    Need inspiration? Let AI generate a portfolio project idea based on my skill set. Select a field and see what we can build!
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+                    <select id="ai-spark-select" class="w-full sm:w-1/2 rounded-md border-2 border-slate-700 px-4 py-3 text-lg transition-all focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/50">
+                        <option value="Data Analysis">Data Analysis</option>
+                        <option value="Machine Learning">Machine Learning</option>
+                        <option value="Python Automation">Python Automation</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                    </select>
+                    <button id="ai-spark-btn" class="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-emerald-500 px-8 py-3 text-lg font-medium text-slate-900 transition-transform duration-300 hover:scale-105 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:scale-100">
+                        <i data-lucide="sparkles" class="mr-2 h-5 w-5"></i>
+                        Generate Idea
+                    </button>
+                </div>
+                <div id="ai-spark-loader" class="mt-8 justify-center hidden">
+                    <i data-lucide="loader-2" class="h-10 w-10 text-emerald-500 spinner"></i>
+                </div>
+                <div id="ai-spark-result" class="mt-8 min-h-[100px] rounded-lg bg-slate-800 p-6 text-left max-w-lg mx-auto text-slate-300 hidden leading-relaxed transition-all">
+                    <!-- AI generated content will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Writing Section (Medium Link) -->
+        <section id="writing" class="py-20 md:py-32 text-center">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white md:text-4xl">My Writing</h2>
+                <div class="mt-6 mx-auto h-1 w-20 rounded-full bg-emerald-500"></div>
+                <p class="mt-8 mx-auto max-w-2xl text-lg text-slate-300 leading-relaxed">
+                    I'm passionate about tech blogging and experimenting with AI tools. I share my learning journey, project deep-dives, and thoughts on the latest in data science and development on my Medium blog.
+                </p>
+                <div class="mt-10">
+                    <!-- 
+                        IMPORTANT: Update this 'href' attribute to your actual Medium profile URL.
+                        Example: href="https://medium.com/@yourusername"
+                    -->
+                    <a href="https://medium.com/@your-username" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block rounded-md bg-emerald-500 px-8 py-4 text-lg font-medium text-slate-900 transition-transform duration-300 hover:scale-105 hover:bg-emerald-400">
+                        Read My Blog on Medium
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 text-center bg-slate-800/50 rounded-lg">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white md:text-4xl">Get In Touch</h2>
+                <div class="mt-6 mx-auto h-1 w-20 rounded-full bg-emerald-500"></div>
+                <p class="mt-8 mx-auto max-w-xl text-lg text-slate-300 leading-relaxed">
+                    My inbox is always open. Whether you have a question, a project idea, or just want to connect, feel free to reach out!
+                </p>
+                <div class="mt-10">
+                    <button id="contact-btn" 
+                       class="inline-block rounded-md border-2 border-emerald-500 px-8 py-4 text-lg font-medium text-emerald-400 transition-all duration-300 hover:bg-emerald-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900">
+                        Copy Email
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-slate-400 border-t border-slate-800 mt-20">
+        <p>&copy; 2025 Sumit Shingne. All rights reserved.</p>
+        <p class="text-sm">Built with by Purva</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: unobserve after it's visible so it doesn't re-animate
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, { 
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        // Observe all elements with the .animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- Gemini API Feature ---
+
+        const aiBtn = document.getElementById('ai-spark-btn');
+        const aiSelect = document.getElementById('ai-spark-select');
+        const aiLoader = document.getElementById('ai-spark-loader');
+        const aiResult = document.getElementById('ai-spark-result');
+
+        // Main function to call the Gemini API
+        async function callGeminiAPI(userQuery, systemPrompt, retries = 3, delay = 1000) {
+            const apiKey = ""; // API key is handled by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    if (response.status === 429 && retries > 0) {
+                        // Exponential backoff for rate limiting
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return callGeminiAPI(userQuery, systemPrompt, retries - 1, delay * 2);
+                    }
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    return candidate.content.parts[0].text;
+                } else {
+                    throw new Error("Invalid response structure from API.");
+                }
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return callGeminiAPI(userQuery, systemPrompt, retries - 1, delay * 2);
+                }
+                return "Sorry, I couldn't generate an idea right now. Please try again later.";
+            }
+        }
+
+        // Event listener for the "Generate Idea" button
+        aiBtn.addEventListener('click', async () => {
+            const selectedTopic = aiSelect.value;
+
+            // Show loader, hide result, disable button
+            aiLoader.style.display = 'flex';
+            aiResult.style.display = 'none';
+            aiBtn.disabled = true;
+
+            // Define the prompts for the API
+            const systemPrompt = "You are a helpful assistant acting as a senior software engineer and career mentor. Your goal is to generate a concise, interesting portfolio project idea.";
+            const userQuery = `Please generate a single, concise project idea for a Software Developer's portfolio. The project should be related to the field of ${selectedTopic}. The idea should be described in one short paragraph (2-3 sentences). Start the response with a creative project title followed by a colon (e.g., 'Project Title: ...').`;
+
+            // Call the API
+            const idea = await callGeminiAPI(userQuery, systemPrompt);
+
+            // Hide loader, show result, enable button
+            aiLoader.style.display = 'none';
+            aiResult.innerText = idea; // Use innerText for security
+            aiResult.style.display = 'block';
+            aiBtn.disabled = false;
+        });
+
+        // --- Contact Button - Copy Email ---
+        const contactBtn = document.getElementById('contact-btn');
+        const emailToCopy = 'shinganesumit80@gmail.com';
+
+        contactBtn.addEventListener('click', () => {
+            
+            const showFeedback = (success) => {
+                const originalText = "Copy Email";
+                if (success) {
+                    contactBtn.innerText = 'Email Copied!';
+                } else {
+                    contactBtn.innerText = 'Copy Failed :(';
+                }
+                setTimeout(() => {
+                    contactBtn.innerText = originalText;
+                }, 2000);
+            };
+
+            // Try the modern navigator.clipboard API first
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(emailToCopy).then(
+                    () => {
+                        showFeedback(true);
+                    },
+                    () => {
+                        // If it fails, fall back to execCommand
+                        fallbackCopy();
+                    }
+                );
+            } else {
+                // Fallback for older browsers or insecure contexts
+                fallbackCopy();
+            }
+
+            function fallbackCopy() {
+                // Create a temporary textarea element
+                const textArea = document.createElement('textarea');
+                textArea.value = emailToCopy;
+                
+                // Style it to be hidden
+                textArea.style.position = 'fixed';
+                textArea.style.top = 0;
+                textArea.style.left = 0;
+                textArea.style.width = '2em';
+                textArea.style.height = '2em';
+                textArea.style.padding = 0;
+                textArea.style.border = 'none';
+                textArea.style.outline = 'none';
+                textArea.style.boxShadow = 'none';
+                textArea.style.background = 'transparent';
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    showFeedback(successful);
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                    showFeedback(false);
+                }
+
+                document.body.removeChild(textArea);
+            }
+        });
+
+    </script>
+
+</body>
+</html>
+
